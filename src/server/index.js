@@ -1,5 +1,6 @@
 var path = require('path')
-var aylien = require('aylien_textapi')
+var AylienNewsApi = require("aylien-news-api");
+var defaultClient = AylienNewsApi.ApiClient.instance;
 const express = require('express')
 const mockAPIResponse = require('./mockAPI.js')
 const dotenv = require('dotenv');
@@ -7,10 +8,13 @@ dotenv.config();
 const app = express()
 
 // aylien API credentials
-var textapi = new aylien({
-    application_id: process.env.API_ID,
-    application_key: process.env.API_KEY
-});
+var app_id = defaultClient.authentications["app_id"];
+app_id.apiKey = process.env["NEWSAPI_APP_ID"];
+
+var app_key = defaultClient.authentications["app_key"];
+app_key.apiKey = process.env["NEWSAPI_APP_KEY"];
+
+var api = new AylienNewsApi.DefaultApi();
 
 app.use(express.static('dist'))
 
