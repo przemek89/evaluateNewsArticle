@@ -6,8 +6,11 @@ import { validURL} from '../src/client/js/urlValidation'
 // A test suite may contain one or more related tests
 describe("Testing the submit functionality", () => {  
     test("Testing the handleSubmit() function", () => {
-           expect(handleSubmit).toBeDefined();
-})});
+        expect(handleSubmit('http://localhost:8082/meaningCloud', {url: "https://www.wikipedia.org/"})).resolves.toBe({
+            "polarity":"neutral"
+          })
+    })
+});
 
 describe('tests for url validation', () => {
     it('Returns true on valid url', () => {
