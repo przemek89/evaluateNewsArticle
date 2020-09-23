@@ -14,10 +14,10 @@ describe("Testing the submit functionality", () => {
 
 describe('tests for url validation', () => {
     it('Returns true on valid url', () => {
-        expect(validURL('https://www.legionisci.com/')).toBe(true);
+        expect(validURL('https://www.legionisci.com/')).toBeTruthy();
     })
 
     it('Returns false on invalid url', () => {
-        expect(validURL('invalid_url')).toBe(false);
+        expect(validURL('invalid_url')).toBeFalsy();
     })
 })

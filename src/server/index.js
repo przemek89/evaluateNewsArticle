@@ -1,6 +1,6 @@
 var path = require('path')
 const express = require('express')
-var bodyParser = require('body-parser')
+const bodyParser = require('body-parser')
 const mockAPIResponse = require('./mockAPI.js')
 const dotenv = require('dotenv');
 dotenv.config();
