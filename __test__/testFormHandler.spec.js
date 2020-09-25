@@ -11,8 +11,11 @@ describe("Testing the submit functionality", () => {
     test("Testing the handleSubmit() function", () => {
         const event = { preventDefault: () => {} };
         jest.spyOn(event, 'preventDefault');
-
+        event.preventDefault()
         expect(event.preventDefault).toBeCalled();
+        expect(handleSubmit('http://localhost:8082/meaningCloud', {url: "https://www.wikipedia.org/"})).resolves.toBe({
+            "polarity":"neutral"
+          })
     })
 });
 
