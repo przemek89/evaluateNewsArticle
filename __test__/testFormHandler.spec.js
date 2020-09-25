@@ -2,28 +2,17 @@
 import { handleSubmit } from '../src/client/js/formHandler'
 import { validURL} from '../src/client/js/urlValidation'
 
-import Axios from 'axios';
-import MockAdapter from 'axios-mock-adapter';
-let mockAxios;
+import { enableFetchMocks } from 'jest-fetch-mock'
+enableFetchMocks()
 
 // The describe() function takes two arguments - a string description, and a test suite as a callback function.  
 // A test suite may contain one or more related tests
 describe("Testing the submit functionality", () => {
-    const event = { preventDefault: () => {} };
-
-    beforeEach(() => {
-        mockAxios = new MockAdapter(Axios);
-        jest.spyOn(event, 'preventDefault');
-      });
-
-      afterEach(() => {
-        mockAxios.reset();
-      });
-
     test("Testing the handleSubmit() function", () => {
-        expect(handleSubmit('http://localhost:8082/meaningCloud', {url: "https://www.wikipedia.org/"})).resolves.toBe({
-            "polarity":"neutral"
-          })
+        const event = { preventDefault: () => {} };
+        jest.spyOn(event, 'preventDefault');
+
+        expect(event.preventDefault).toBeCalled();
     })
 });
 
